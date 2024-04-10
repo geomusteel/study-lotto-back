@@ -1,3 +1,5 @@
 ###
+GET http://localhost:3030/lotto/save-draw
 
-GET http://localhost:3030/test
+###
+GET http://localhost:3030/lotto/draws
