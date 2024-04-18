@@ -40,7 +40,6 @@ export class LottoService {
   async lottoDrawArray() {
     // 로또 당첨 정보를 데이터베이스에서 가져옵니다.
     const lottoModels = await this.lottoRepository.find();
-    console.log(lottoModels);
 
     // 각 번호의 출현 횟수를 저장할 객체를 초기화합니다.
     const numberStatistic = {};
@@ -61,7 +60,40 @@ export class LottoService {
         }
       });
     });
+    console.log(numberStatistic);
+    return numberStatistic;
+  }
 
+  async lottoDrawRangeArray() {
+    // 로또 당첨 정보를 데이터베이스에서 가져옵니다.
+    const lottoModels = await this.lottoRepository.find();
+
+    // 각 번호의 출현 횟수를 저장할 객체를 초기화합니다.
+    const numberStatistic = [0, 0, 0, 0, 0];
+
+    lottoModels.forEach((lotto) => {
+      [
+        lotto.drwtNo1,
+        lotto.drwtNo2,
+        lotto.drwtNo3,
+        lotto.drwtNo4,
+        lotto.drwtNo5,
+        lotto.drwtNo6,
+      ].forEach((number) => {
+        if (number <= 10) {
+          numberStatistic[0]++;
+        } else if (number <= 20) {
+          numberStatistic[1]++;
+        } else if (number <= 30) {
+          numberStatistic[2]++;
+        } else if (number <= 40) {
+          numberStatistic[3]++;
+        } else {
+          numberStatistic[4]++;
+        }
+      });
+    });
+    console.log(numberStatistic);
     return numberStatistic;
   }
 }

@@ -14,4 +14,9 @@ export class LottoController {
   async getLottoDraws() {
     return await this.lottoService.lottoDrawArray();
   }
+
+  @Get('draws-range')
+  async getLottoDrawsRange() {
+    return await this.lottoService.lottoDrawRangeArray();
+  }
 }

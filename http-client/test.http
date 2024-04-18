@@ -3,3 +3,6 @@ GET http://localhost:3030/lotto/save-draw
 
 ###
 GET http://localhost:3030/lotto/draws
+
+###
+GET http://localhost:3030/lotto/draws-range
