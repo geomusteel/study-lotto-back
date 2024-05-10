@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Query } from '@nestjs/common';
 import { LottoService } from './lotto.service';
 
 @Controller('lotto')
@@ -18,5 +18,10 @@ export class LottoController {
   @Get('draws-range')
   async getLottoDrawsRange() {
     return await this.lottoService.lottoDrawRangeArray();
+  }
+
+  @Get('round')
+  async getLottoRound(@Query('roundNumber') roundNumber: number) {
+    return await this.lottoService.findRound(roundNumber);
   }
 }

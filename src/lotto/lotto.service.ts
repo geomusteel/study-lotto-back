@@ -16,7 +16,7 @@ export class LottoService {
   ) {}
 
   async insertLottoDraw() {
-    for (let i = 1; i < 1115; i++) {
+    for (let i = 1115; i <= 1118; i++) {
       const response = await firstValueFrom(
         this.httpService.get(
           `https://www.dhlottery.co.kr/common.do?method=getLottoNumber&drwNo=${i}`,
@@ -60,7 +60,6 @@ export class LottoService {
         }
       });
     });
-    console.log(numberStatistic);
     return numberStatistic;
   }
 
@@ -93,7 +92,18 @@ export class LottoService {
         }
       });
     });
-    console.log(numberStatistic);
     return numberStatistic;
+  }
+
+  async findRound(roundNumber: number) {
+    const data = await this.lottoRepository.findOne({
+      where: {
+        drwNo: roundNumber,
+      },
+    });
+
+    console.log(roundNumber);
+    console.log(data);
+    return data;
   }
 }
