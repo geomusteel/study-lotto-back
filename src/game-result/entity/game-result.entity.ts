@@ -2,71 +2,71 @@ import { IsDate, IsInt, IsNotEmpty, Min } from 'class-validator';
 import { Type } from 'class-transformer';
 import { Column, Entity, PrimaryColumn } from 'typeorm';
 
-@Entity()
-export class LottoModel {
-  @PrimaryColumn()
+@Entity('game_result')
+export class GameResultModel {
+  @PrimaryColumn({ name: 'draw_no' })
   @IsInt({ message: '회차 번호는 정수여야 합니다.' })
   @Min(1, { message: '회차 번호는 1 이상이어야 합니다.' })
-  drwNo: number;
+  drawNo: number;
 
-  @Column('bigint')
+  @Column({ name: 'total_selling_amount', type: 'bigint' })
   @IsInt({ message: '총 판매액은 정수여야 합니다.' })
   @Min(0, { message: '총 판매액은 0 이상이어야 합니다.' })
-  totSellamnt: number;
+  totalSellingAmount: number;
 
-  @Column()
+  @Column({ name: 'draw_no_date' })
   @IsNotEmpty({ message: '추첨 날짜는 비어있으면 안 됩니다.' })
   @Type(() => Date)
   @IsDate({ message: '유효한 날짜여야 합니다.' })
-  drwNoDate: Date;
+  drawNoDate: Date;
 
-  @Column('bigint')
+  @Column({ name: 'first_winning_amount', type: 'bigint' })
   @IsInt({ message: '1등 당첨금액은 정수여야 합니다.' })
   @Min(0, { message: '1등 당첨금액은 0 이상이어야 합니다.' })
-  firstWinamnt: number;
+  firstWinningAmount: number;
 
-  @Column()
+  @Column({ name: 'first_prize_winner_count' })
   @IsInt({ message: '1등 당첨자 수는 정수여야 합니다.' })
   @Min(0, { message: '1등 당첨자 수는 0 이상이어야 합니다.' })
-  firstPrzwnerCo: number;
+  firstPrizeWinnerCount: number;
 
-  @Column('bigint')
+  @Column({ name: 'first_accumulated_amount', type: 'bigint' })
   @IsInt({ message: '1등 당첨금액 누적액은 정수여야 합니다.' })
   @Min(0, { message: '1등 당첨금액 누적액은 0 이상이어야 합니다.' })
-  firstAccumamnt: number;
+  firstAccumulatedAmount: number;
 
-  @Column()
+  @Column({ name: 'ball_no1' })
   @IsInt({ message: '당첨 번호는 정수여야 합니다.' })
   @Min(1, { message: '당첨 번호는 1 이상 45 이하이어야 합니다.' })
-  drwtNo1: number;
+  ballNo1: number;
 
-  @Column()
+  @Column({ name: 'ball_no2' })
   @IsInt({ message: '당첨 번호는 정수여야 합니다.' })
   @Min(1, { message: '당첨 번호는 1 이상 45 이하이어야 합니다.' })
-  drwtNo2: number;
+  ballNo2: number;
 
-  @Column()
+  @Column({ name: 'ball_no3' })
   @IsInt({ message: '당첨 번호는 정수여야 합니다.' })
   @Min(1, { message: '당첨 번호는 1 이상 45 이하이어야 합니다.' })
-  drwtNo3: number;
+  ballNo3: number;
 
-  @Column()
+  @Column({ name: 'ball_no4' })
   @IsInt({ message: '당첨 번호는 정수여야 합니다.' })
   @Min(1, { message: '당첨 번호는 1 이상 45 이하이어야 합니다.' })
-  drwtNo4: number;
+  ballNo4: number;
 
-  @Column()
+  @Column({ name: 'ball_no5' })
   @IsInt({ message: '당첨 번호는 정수여야 합니다.' })
   @Min(1, { message: '당첨 번호는 1 이상 45 이하이어야 합니다.' })
-  drwtNo5: number;
+  ballNo5: number;
 
-  @Column()
+  @Column({ name: 'ball_no6' })
   @IsInt({ message: '당첨 번호는 정수여야 합니다.' })
   @Min(1, { message: '당첨 번호는 1 이상 45 이하이어야 합니다.' })
-  drwtNo6: number;
+  ballNo6: number;
 
-  @Column()
+  @Column({ name: 'bonus_ball_no' })
   @IsInt({ message: '보너스 번호는 정수여야 합니다.' })
   @Min(1, { message: '보너스 번호는 1 이상 45 이하이어야 합니다.' })
-  bnusNo: number;
+  bonusBallNo: number;
 }

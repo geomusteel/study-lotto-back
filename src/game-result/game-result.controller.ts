@@ -1,9 +1,9 @@
-import { Controller, Get, Query } from '@nestjs/common';
-import { LottoService } from './lotto.service';
+import { Controller, Get, Param, Query } from '@nestjs/common';
+import { GameResultService } from './game-result.service';
 
-@Controller('lotto')
-export class LottoController {
-  constructor(private readonly lottoService: LottoService) {}
+@Controller('game-result')
+export class GameResultController {
+  constructor(private readonly lottoService: GameResultService) {}
 
   @Get('save-draw')
   async getLottoDrawSave() {
@@ -23,5 +23,10 @@ export class LottoController {
   @Get('round')
   async getLottoRound(@Query('roundNumber') roundNumber: number) {
     return await this.lottoService.findRound(roundNumber);
+  }
+
+  @Get('prizes/:drawNo')
+  getPrizeInfo(@Param('drawNo') drawNo: number) {
+    return this.lottoService.getLottoResults(drawNo);
   }
 }

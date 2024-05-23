@@ -9,3 +9,6 @@ GET http://localhost:3030/lotto/draws-range
 
 ###
 GET http://localhost:3030/lotto/round?roundNumber=1113
+
+###
+GET http://localhost:3030/lotto/prizes/1120
